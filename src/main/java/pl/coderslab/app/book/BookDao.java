@@ -1,11 +1,12 @@
 package pl.coderslab.app.book;
 
 import org.springframework.stereotype.Repository;
-import pl.coderslab.app.book.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -23,6 +24,14 @@ public class BookDao {
     public Book findBookById(long id) {
         return entityManager.find(Book.class, id);
     }
+
+    //do weryfikacji:
+    public List<Book> findAllBooks(Book entity){
+        Query query = entityManager.createQuery("SELECT a FROM " + Book.class + " a");
+        List<Book> books = query.getResultList();
+        return books;
+    }
+
 
     public void deleteBook(Book entity) {
         entityManager.remove(entityManager.contains(entity) ?
