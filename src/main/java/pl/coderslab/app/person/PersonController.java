@@ -13,6 +13,11 @@ public class PersonController {
     @Autowired
     private PersonDao personDao;
 
+    @RequestMapping("/form")
+    public String showPersonForm(){
+        return "person-form";
+    }
+
     @RequestMapping("/save")
     @ResponseBody
     public String create(@RequestParam(name="login") String login,
