@@ -32,8 +32,13 @@ public class BookDao {
         return books;
     }
 
-
     public void deleteBook(Book entity) {
         entityManager.remove(entityManager.contains(entity) ?
                 entity : entityManager.merge(entity)); }
+
+    public List<Book> getRatingList(int rating){
+        Query query = entityManager.createQuery("SELECT b FROM " + Book.class + "b WHERE rating=" + rating);
+        List<Book> booksRating = query.getResultList();
+        return booksRating;
+    }
 }
