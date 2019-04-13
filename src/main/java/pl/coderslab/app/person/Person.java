@@ -13,6 +13,9 @@ public class Person {
     private String password;
     private String email;
 
+    @OneToOne
+    private PersonDetails personDetails;
+
     public Person() {
     }
 
@@ -32,6 +35,10 @@ public class Person {
         return email;
     }
 
+    public PersonDetails getPersonDetails() {
+        return personDetails;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -46,5 +53,9 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setPersonDetails(PersonDetails personDetails) {
+        this.personDetails = personDetails;
     }
 }

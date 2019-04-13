@@ -15,6 +15,9 @@ public class PersonDetails {
     private String street;
     private String city;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private Person person;
+
     public PersonDetails() {
     }
 
@@ -42,6 +45,10 @@ public class PersonDetails {
         return city;
     }
 
+    public Person getPerson() {
+        return person;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -64,5 +71,9 @@ public class PersonDetails {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
