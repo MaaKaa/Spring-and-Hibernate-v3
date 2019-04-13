@@ -5,11 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,17 +22,18 @@ public class PersonDetailsController {
     //akcja wyświetlenia formularza:
     @RequestMapping(value ="/form", method = RequestMethod.GET)
     public String showPersonDetailsForm(Model model){
-        model.addAttribute("personDetails", new PersonDetails());
-        return "person-details-form";
+        model.addAttribute("personDTO", new PersonDTO());
+        return "registration-form";
     }
 
     //akcja przetwarzania danych z formularza:
     @RequestMapping(value ="/form", method = RequestMethod.POST)
-    public String processPersonDetailsForm(@ModelAttribute PersonDetails personDetails){
-        entityManager.persist(personDetails);
-        return "person-details-success";
+    @ResponseBody
+    public String processPersonDetailsForm(@ModelAttribute PersonDTO personDTO){
+        return personDTO.toString();
     }
-    @ModelAttribute("country")
+
+    @ModelAttribute("countries")
     public Collection<String> showCountries(){
         List<String> countries = new ArrayList<>();
         countries.add("Denmark");
@@ -62,4 +63,5 @@ public class PersonDetailsController {
         hobbies.add("Walking");
         return hobbies;
     }
+
 }
