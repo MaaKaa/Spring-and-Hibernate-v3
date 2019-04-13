@@ -13,16 +13,14 @@ public class PersonController {
 
     //akcja wyświetlenia formularza:
     @RequestMapping(value ="/form", method = RequestMethod.GET)
-    public String showLoginForm(){
+    public String showLoginForm(Model model){
+        model.addAttribute("person", new Person());
         return "person-form";
     }
 
     //akcja przetwarzania danych z formularza:
     @RequestMapping(value ="/form", method = RequestMethod.POST)
-    public String processLogin(@RequestParam(name="login") String login,
-                               @RequestParam(name="password") String password,
-                               @RequestParam(name="email") String email){
-        Person person = new Person();
+    public String processLogin(@ModelAttribute Person person){
         personDao.savePerson(person);
         return "success";
     }

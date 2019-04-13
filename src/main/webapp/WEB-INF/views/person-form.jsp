@@ -6,17 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Person Form</title>
 </head>
 <body>
 Log in:
-    <form method="post">
-        Login:<input type="text" name="login"><br>
-        Password: <input type="password" name="password"><br>
-        E-mail:<input type="email" name="email"><br>
+    <form:form method="post" modelAttribute="person">
+        Login:<form:input path="login"/><br>
+        Password: <form:input path="password"/><br>
+        E-mail:<form:input path="email"/><br>
         <input type="submit" value="save"><br>
-    </form>
+    </form:form>
 </body>
 </html>
