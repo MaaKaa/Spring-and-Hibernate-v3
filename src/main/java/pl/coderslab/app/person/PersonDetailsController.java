@@ -55,7 +55,7 @@ public class PersonDetailsController {
     }
 
     @ModelAttribute("hobbies")
-    public Collection<String> hobbies(){
+    public Collection<String> showHobbies(){
         List<String> hobbies = new ArrayList<>();
         hobbies.add("Eating");
         hobbies.add("Reading");
