@@ -1,9 +1,12 @@
 package pl.coderslab.app.book;
 
+import pl.coderslab.app.author.Author;
 import pl.coderslab.app.publisher.Publisher;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="books")
@@ -13,7 +16,7 @@ public class Book {
     private Long id;
 
     private String title;
-    private String author;
+    //private Author author;
     @Column(scale=2, precision = 4)
     private BigDecimal rating;
 
@@ -21,6 +24,9 @@ public class Book {
     private Publisher publisher;
     private String description;
 
+
+    @ManyToMany
+    private List<Author> authors = new ArrayList<>();
 
     public Book() {
     }
@@ -33,9 +39,9 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
+    /*public Author getAuthor() {
         return author;
-    }
+    }*/
 
     public BigDecimal getRating() {
         return rating;
@@ -57,9 +63,9 @@ public class Book {
         this.title = title;
     }
 
-    public void setAuthor(String author) {
+    /*public void setAuthor(Author author) {
         this.author = author;
-    }
+    }*/
 
     public void setRating(BigDecimal rating) {
         this.rating = rating;
@@ -71,5 +77,13 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 }
