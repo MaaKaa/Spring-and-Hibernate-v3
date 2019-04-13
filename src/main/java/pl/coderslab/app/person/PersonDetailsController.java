@@ -1,0 +1,9 @@
+package pl.coderslab.app.person;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/person-details")
+public class PersonDetailsController {
+}
