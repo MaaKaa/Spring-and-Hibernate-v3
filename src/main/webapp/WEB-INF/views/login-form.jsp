@@ -15,7 +15,7 @@
 Log in:
     <form:form method="post" modelAttribute="person">
         Login:<form:input path="login"/><br>
-        Password: <form:input path="password"/><br>
+        Password: <form:password path="password"/><br>
         E-mail:<form:input path="email"/><br>
         <input type="submit" value="save"><br>
     </form:form>
