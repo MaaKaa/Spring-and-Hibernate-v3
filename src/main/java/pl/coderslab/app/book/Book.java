@@ -1,5 +1,7 @@
 package pl.coderslab.app.book;
 
+import pl.coderslab.app.publisher.Publisher;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -14,7 +16,9 @@ public class Book {
     private String author;
     @Column(scale=2, precision = 4)
     private BigDecimal rating;
-    private String publisher;
+
+    @ManyToOne
+    private Publisher publisher;
     private String description;
 
 
@@ -37,7 +41,7 @@ public class Book {
         return rating;
     }
 
-    public String getPublisher() {
+    public Publisher getPublisher() {
         return publisher;
     }
 
@@ -61,7 +65,7 @@ public class Book {
         this.rating = rating;
     }
 
-    public void setPublisher(String publisher) {
+    public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
 

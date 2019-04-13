@@ -12,19 +12,19 @@ import javax.transaction.Transactional;
 public class BookDao {
     @PersistenceContext
     EntityManager entityManager;
-    public void save(Book entity) {
+    public void saveBook(Book entity) {
         entityManager.persist(entity);
     }
 
-    public void edit(Book entity){
+    public void editBook(Book entity){
         entityManager.merge(entity);
     }
 
-    public Book findById(long id) {
+    public Book findBookById(long id) {
         return entityManager.find(Book.class, id);
     }
 
-    public void delete(Book entity) {
+    public void deleteBook(Book entity) {
         entityManager.remove(entityManager.contains(entity) ?
                 entity : entityManager.merge(entity)); }
 }
