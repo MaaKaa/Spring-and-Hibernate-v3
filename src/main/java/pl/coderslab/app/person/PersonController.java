@@ -15,12 +15,12 @@ public class PersonController {
     @RequestMapping(value ="/form", method = RequestMethod.GET)
     public String showLoginForm(Model model){
         model.addAttribute("person", new Person());
-        return "person-form";
+        return "login-form";
     }
 
     //akcja przetwarzania danych z formularza:
     @RequestMapping(value ="/form", method = RequestMethod.POST)
-    public String processLogin(@ModelAttribute Person person){
+    public String processLoginForm(@ModelAttribute Person person){
         personDao.savePerson(person);
         return "success";
     }

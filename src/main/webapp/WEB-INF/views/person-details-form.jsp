@@ -14,17 +14,17 @@
 <body>
 Add person details:
     <form:form method="post" modelAttribute="personDetails">
-        Login:
-        <form:input path="login"/><br>
+
+        <%--<form:input path="login"/><br>
         Password:
         <form:password path="password"/><br>
         E-mail:
-        <form:input path="email"/><br>
+        <form:input path="email"/><br>--%>
         First Name:
         <form:input path="firstName"/><br>
         Last Name:
         <form:input path="lastName"/><br>
-        Gender:
+        <%--Gender:
         <form:radiobutton path="gender" value="Male"/>
         <form:radiobutton path="gender" value="Female"/>
         <form:radiobutton path="gender" value="Other"/><br>
@@ -44,7 +44,7 @@ Add person details:
         </form:select>
         Hobbies:
         <form:checkbox path="hobbies" items="${hobbies}" itemLabel="name" itemValue="id"/><br>
-        <input type="submit" value="save"><br>
+        <input type="submit" value="save"><br>--%>
     </form:form>
 </body>
 </html>
