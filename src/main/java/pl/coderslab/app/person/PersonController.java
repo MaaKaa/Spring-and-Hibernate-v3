@@ -2,10 +2,8 @@ package pl.coderslab.app.person;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/persons")
@@ -13,9 +11,20 @@ public class PersonController {
     @Autowired
     private PersonDao personDao;
 
-    @RequestMapping("/form")
-    public String showPersonForm(){
+    //akcja wyświetlenia formularza:
+    @RequestMapping(value ="/form", method = RequestMethod.GET)
+    public String showLoginForm(){
         return "person-form";
+    }
+
+    //akcja przetwarzania danych z formularza:
+    @RequestMapping(value ="/form", method = RequestMethod.POST)
+    public String processLogin(@RequestParam(name="login") String login,
+                               @RequestParam(name="password") String password,
+                               @RequestParam(name="email") String email){
+        Person person = new Person();
+        personDao.savePerson(person);
+        return "success";
     }
 
     @RequestMapping("/save")
