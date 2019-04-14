@@ -31,7 +31,7 @@ public class BookController {
         return "add-book-form";
     }
 
-    //akcja przetwarzania danych z formularza:
+    //akcja przetwarzania danych z formularza - do poprawy (błąd 400):
     @RequestMapping(value ="/form", method = RequestMethod.POST)
     @ResponseBody
     public String processLoginForm(@ModelAttribute Book book){

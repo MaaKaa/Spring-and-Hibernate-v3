@@ -96,6 +96,7 @@
             <version>1.1.1</version>
         </dependency>
 
+        <!-- Hibernate Validator-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>

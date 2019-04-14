@@ -26,7 +26,7 @@ public class BookDao {
     }
 
     //do weryfikacji:
-    public List<Book> findAllBooks(Book entity){
+    public List<Book> findAllBooks(){
         Query query = entityManager.createQuery("SELECT a FROM " + Book.class + " a");
         List<Book> books = query.getResultList();
         return books;

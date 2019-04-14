@@ -4,6 +4,8 @@ import pl.coderslab.app.author.Author;
 import pl.coderslab.app.publisher.Publisher;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +17,24 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 5)
     private String title;
-    //private Author author;
+    //@NotNull
+    // private Author author;
     @Column(scale=2, precision = 4)
+
+    @NotNull
+    @Size(min = 1, max = 10)
     private BigDecimal rating;
 
+    @NotNull
     @ManyToOne
     private Publisher publisher;
-    private String description;
 
+    @NotNull
+    @Size(max = 600)
+    private String description;
 
     @ManyToMany
     private List<Author> authors = new ArrayList<>();
