@@ -42,6 +42,9 @@ public class Book {
     @ManyToMany
     private List<Author> authors = new ArrayList<>();
 
+    @DecimalMin("1")
+    private Integer pages;
+
     public Book() {
     }
 
@@ -67,6 +70,10 @@ public class Book {
 
     public String getDescription() {
         return description;
+    }
+
+    public long getPages() {
+        return pages;
     }
 
     public void setId(Long id) {
@@ -100,5 +107,9 @@ public class Book {
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
+    }
+
+    public void setPages(Integer pages) {
+        this.pages = pages;
     }
 }
