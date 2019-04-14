@@ -4,6 +4,8 @@ import pl.coderslab.app.author.Author;
 import pl.coderslab.app.publisher.Publisher;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -25,7 +27,8 @@ public class Book {
     @Column(scale=2, precision = 4)
 
     @NotNull
-    @Size(min = 1, max = 10)
+    @DecimalMin("1")
+    @DecimalMax("10")
     private BigDecimal rating;
 
     @NotNull
