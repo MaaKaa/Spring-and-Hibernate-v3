@@ -26,7 +26,7 @@ public class Author {
     private List<Book> books = new ArrayList<>();
 
     @PESEL
-    private Integer pesel;
+    private String pesel;
 
     @Email
     private String email;

@@ -44,5 +44,7 @@ public class ValidationController {
         }
     }
 
+    //dodać metody do validacji Authora i Publishera
+
 
 }

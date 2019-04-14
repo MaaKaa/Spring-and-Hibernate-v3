@@ -3,6 +3,7 @@ package pl.coderslab.app.publisher;
 import pl.coderslab.app.book.Book;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,13 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private String name;
+
+    private String nip;
+
+    private String regon;
 
     @OneToMany(mappedBy="publisher")
     private List<Book> books = new ArrayList<>();
@@ -28,6 +35,18 @@ public class Publisher {
         this.name = name;
     }
 
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void setNip(String nip) {
+        this.nip = nip;
+    }
+
+    public void setRegon(String regon) {
+        this.regon = regon;
+    }
+
     public Long getId() {
         return id;
     }
@@ -40,7 +59,11 @@ public class Publisher {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public String getNip() {
+        return nip;
+    }
+
+    public String getRegon() {
+        return regon;
     }
 }
