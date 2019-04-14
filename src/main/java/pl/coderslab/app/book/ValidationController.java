@@ -17,6 +17,7 @@ import javax.validation.Valid;
 import javax.validation.Validator;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -109,10 +110,20 @@ public class ValidationController {
     @PostMapping("/validateAddBookForm")
     public String validateAddBookForm(@ModelAttribute @Valid Book book, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            return "book-list";
+            return "add-book-form";
         }else{
             bookDao.saveBook(book);
-            return "success";
+            return "book-list";
         }
     }
+
+    @ModelAttribute("publishers")
+    public Collection<String> showPublishers(){
+        List<String> publishers = new ArrayList<>();
+        publishers.add("Wydawnictwo Czarne");
+        publishers.add("PWN");
+        publishers.add("Nowa Era");
+        return publishers;
+    }
+
 }
