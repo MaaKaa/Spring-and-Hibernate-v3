@@ -14,15 +14,19 @@
 <body>
 Add new book:<br>
     <form:form method="post" modelAttribute="book">
+        <form:errors path="title"/><br>
         Title:
         <form:input path="title"/><br>
+        <form:errors path="authors"/><br>
         Authors:
         <form:input path="authors"/><br>
+        <form:errors path="publisher"/><br>
         Publisher:
         <form:select path="publisher">
             <form:option value="-" label="--Please Select--"/>
             <form:options items="${publishers}"/>
         </form:select><br>
+        <form:errors path="description"/><br>
         Description:
         <form:input path="description"/><br>
         Rating:

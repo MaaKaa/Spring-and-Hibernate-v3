@@ -3,14 +3,17 @@ package pl.coderslab.app.book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.app.author.Author;
 import pl.coderslab.app.publisher.Publisher;
 
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
+import javax.validation.Valid;
 import javax.validation.Validator;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,6 +25,9 @@ import java.util.Set;
 public class ValidationController {
     @Autowired
     Validator validator;
+
+    @Autowired
+    BookDao bookDao;
 
     @GetMapping("/validateBook")
     public String validateBook(Model model){
@@ -90,6 +96,23 @@ public class ValidationController {
 
             model.addAttribute("errorsPublisher", errorsPublisher);
             return "errors";
+        }
+    }
+
+    @GetMapping("/validateAddBookForm")
+    public String showAddBookFormWithValidation(Model model){
+        Book book = new Book();
+        model.addAttribute("book", book);
+        return "add-book-form";
+    }
+
+    @PostMapping("/validateAddBookForm")
+    public String validateAddBookForm(@ModelAttribute @Valid Book book, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "book-list";
+        }else{
+            bookDao.saveBook(book);
+            return "success";
         }
     }
 }
