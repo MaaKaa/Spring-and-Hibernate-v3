@@ -46,6 +46,18 @@ public class Author {
         return lastName;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -56,6 +68,18 @@ public class Author {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /*public List<Book> getBooks() {

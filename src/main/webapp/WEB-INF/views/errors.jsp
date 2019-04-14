@@ -13,7 +13,19 @@
 </head>
 <body>
 Walidacja niepoprawna:<br>
-<c:forEach items="${errors}" var="error">
+<br>
+<p>Book:</p>
+<c:forEach items="${errorsBook}" var="error">
+    ${error}<br>
+</c:forEach><br>
+<br>
+<p>Author:</p>
+<c:forEach items="${errorsAuthor}" var="error">
+    ${error}<br>
+</c:forEach><br>
+<br>
+<p>Publisher</p>
+<c:forEach items="${errorsPublisher}" var="error">
     ${error}<br>
 </c:forEach><br>
 </body>
